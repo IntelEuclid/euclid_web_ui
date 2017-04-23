@@ -1,0 +1,79 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel">Create Scenario</h4>
+</div>
+
+<div class="modal-body">
+    <form class="form form-horizontal" id="nodesForm">
+        <fieldset>
+            <div class="form-group">
+                <label for="scenario_name">Scenario Name</label>
+                <input type="hidden" name="isEdit" value="<%-isEdit%>">
+                <% if(isEdit) { %>
+                    <input type="hidden" name="oldName" value="<%-scenarioName%>">
+                    <% } %>
+                        <input type="text" class="form-control" id="scenario_name" name="scenario_name" value="<%-scenarioName%>" required>
+                        <span style="clear:none" id="scenario_name_msg" class="help-block"></span>
+            </div>
+            <h3>Nodes</h3>
+            <div class="form-inline">
+                <select class="form-control" style="width:75%" id="select_new_node">
+					<% _.each(allNodes, function(node) { 
+						if (node.name in scenarioNodes){%>
+						<option name="<%-node.name%>" disabled><%-node.name%> </option>
+						<%}else{%>
+						<option name="<%-node.name%>"><%-node.name%> </option>
+
+					<%} }) %>
+ 		 		</select>
+                <label type="button" id="btn_scenario_add_node" class="btn btn-primary">Add Node</label>
+            </div>
+            <br>
+            <ul class="list-group">
+                <% _.each(scenarioNodes, function(node) { %>
+
+                    <li class="list-group-item">
+                        <label>
+							<%-node.name%>
+						</label>
+
+                        <% if (node.param != undefined && $.isEmptyObject(node.param) == false) { %>
+
+                            <div class="dropdown" style="display:inline; position:absolute; right:30px;" id="<%-node.name.replace(/ /g,'_')%>_params">
+                                <button class="btn btn-default dropdown-toggle btn-xs" type="button" id="<%-node.name.replace(/ /g,'_')%>_params_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+									Parameters
+									<span class="caret">
+							</button>
+
+                                <ul class="node_params_list dropdown-menu" name="<%-node.name%>" aria-labelledby="<%-node.name.replace(/ /g,'_')%>_params_btn">
+                                    <% _.each(node.param, function(param) { %>
+                                        <li node="<%-node.name%>" name="<%-param.name%>" style="width:250px;font-size:0.8em;margin-left:5px;">
+                                            <input id="scenario_param_checkbox" type="checkbox" <%if(param.override) {%>checked
+                                            <%}%>></input>
+                                                <%-param.name%>
+                                                    <input id="scenario_param_value" style="height:15px; position:absolute;right: 5px;" type="text" value="<%-param.value%>" <%if(!param.override) {%>disabled
+                                                    <%}%> />
+
+                                        </li>
+                                        <% }) %>
+                                </ul>
+
+                            </div>
+
+                            <% } %>
+
+                                <label type="button" name="<%-node.name%>" style="position:absolute;right:5px;" class="btn btn-remove-node btn-default btn-xs">
+						<span name="<%-node.name%>" class="fa fa-times"></span>
+									</label>
+
+                    </li>
+                    <% }); %>
+            </ul>
+        </fieldset>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" id="btn_new_scenario_close" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary" id="btn_createNew" disabled="true">Save changes</button>
+</div>

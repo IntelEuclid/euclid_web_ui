@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+
+    <script src="js/lib/intel/eventemitter2.js"></script>
+    <script src="js/lib/intel/roslib.js"></script>
+    <script src="js/lib/underscore/underscore.min.js"></script>
+    <script src="js/lib/jquery/jquery-2.2.4.min.js"></script>
+    <script src="js/lib/jquery/jquery.flot.min.js"></script>
+    <script type="text/javascript" src="js/lib/intel/cs_ip.js"></script>
+
+    <style>
+        body {
+            background-color: #0A0A0A;
+            color: #84FFF1;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .plot {
+            width: 150px;
+            height: 200px;
+            display: inline-block;
+        }
+        
+        #events {
+            border: 1px solid #427F78;
+            font-family: courier;
+            overflow-y: scroll;
+            height: 800px;
+            width: 500px;
+        }
+        
+        .event {
+            margin-bottom: 10px;
+        }
+        
+        .event_data {
+            width: 440px;
+            font-size: 0.8em;
+            margin-left: 20px;
+            opacity: 0.8;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+    <script>
+        /**
+         * Setup all visualization elements when the page is loaded. 
+         */
+        function init() {
+
+            // Setup a client to listen to IMU.
+            imu_listener = new ROSLIB.Topic({
+                ros: ros,
+                name: '/camera/imu/drop',
+                messageType: 'sensor_msgs/Imu'
+            });
+            imu_listener.subscribe(function(message) {
+                if (message.linear_acceleration_covariance[0] != -1) {
+                    data = {
+                        'x': message.linear_acceleration.x,
+                        'y': message.linear_acceleration.y,
+                        'z': message.linear_acceleration.z
+                    };
+                    accelerationGraph.addData(data);
+                }
+
+                if (message.angular_velocity_covariance[0] != -1) {
+                    data = {
+                        'x': message.angular_velocity.x,
+                        'y': message.angular_velocity.y,
+                        'z': message.angular_velocity.z
+                    };
+                    gyroGraph.addData(data);
+                }
+
+            });
+            // Setup the marker client.
+        }
+    </script>
+
+    <body onload="init()">
+        <title>IMU Graphs</title>
+        <div style='display:inline-block'>
+            <div>Gyroscope</div>
+            <div id='gyroscope' class='plot'></div>
+        </div>
+        <div style='display:inline-block'>
+            <div>Accelerometer</div>
+            <div id='accelerometer' class='plot'></div>
+        </div>
+
+
+
+
+    </body>
+    <script>
+        var createGraph = function(elementId, startingData, range, resolution) {
+            var history = _.times(resolution, function() {
+                return startingData;
+            });
+            var graph = {
+                history: history,
+                getGraphData: function() {
+                    var result = {};
+                    _.each(this.history, function(data, index) {
+                        _.each(data, function(val, axis) {
+                            result[axis] = result[axis] || {
+                                label: axis,
+                                data: []
+                            };
+                            result[axis].data.push([val, index])
+                        });
+                    });
+                    return _.values(result);
+                },
+                addData: function(data) {
+                    this.history.push(data);
+                    this.history = this.history.slice(1);
+                    this.update();
+                },
+                update: function() {
+                    this.plot.setData(this.getGraphData());
+                    this.plot.draw();
+                },
+            };
+            graph.plot = $.plot("#" + elementId, graph.getGraphData(), {
+                series: {
+                    shadowSize: 0
+                },
+                colors: ['#84FFF1', '#FFF38A', '#FF4B23', '#00797F'],
+                xaxis: {
+                    min: -range,
+                    max: range
+                },
+                yaxis: {
+                    show: false,
+                    min: 0,
+                    max: resolution
+                },
+                legend: {
+                    backgroundOpacity: 0,
+                },
+                grid: {
+                    borderColor: "#427F78"
+                }
+            });
+            return graph;
+        }
+        var gyroGraph = createGraph('gyroscope', {
+            x: 0,
+            y: 0,
+            z: 0
+        }, 40, 100);
+        var accelerationGraph = createGraph('accelerometer', {
+            x: 0,
+            y: 0,
+            z: 0
+        }, 40, 100);
+
+        $('#clear_events').click(function() {
+            $('#events').html('');
+        })
+    </script>
+
+</html>

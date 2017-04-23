@@ -1,0 +1,25 @@
+<div class="form-group">
+    <span style="clear:none" class="help-block">Pick a launch file from the list, When done click Next.</span>
+</div>
+
+<div class="form-group manual_launch_file">
+    <select id="select_edit_node_launchfiles" class="form-control" size="12" <%if(isManualLaunchFile==true){%> disabled <%}%>>
+			<% _.each(launchFiles, function(launchFile){ %>
+            <% if (launchFile == node.launchFileName) %>
+                <option selected><%-launchFile%></option>
+            <% else %>
+                <option><%-launchFile%></option>
+            <%});%>
+    </select>
+</div>
+
+<div class="form-group">
+    <button type="button" class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#manual_launch_file" id="btn_edit_node_select_manual_launchfile">
+        <i class="fa fa-plus"></i>
+    </button>
+    <div style="margin-top:10px;" id="manual_launch_file" class="collapse manual_launch_file <%if(isManualLaunchFile==true){%>in<%}%>">
+        <input type="text" class="form-control" id="txt_edit_node_manual_launchfile" placeholder="File name" value="<%-node.launchFileName%>">
+    </div>
+
+
+</div>

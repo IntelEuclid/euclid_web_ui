@@ -1,0 +1,41 @@
+<div class="form-group">
+    <span style="clear:none" class="help-block">Select Nodes from the list below</span>
+</div>
+
+<div class="form-group" id="edit_node_nodes">
+    <ul class="list-group">
+        <% _.each(runningNodes, function(node) { %>
+            <li class="list-group-item">
+                <input type="checkbox" id="checkbox_edit_node" name="<%-node.name%>" <%if (node.value){%> checked
+                <%}%>>
+                    <label><%-node.name%></label>
+            </li>
+            <% }); %>
+    </ul>
+</div>
+
+
+<div class="form-group">
+    <span style="clear:none" class="help-block">Modify or add launch parameters for the new Node</span>
+</div>
+
+<div class="form-group">
+
+    <div style="margin-top:10px;" id="add_parameter_div" class="form-inline">
+        <input type="text" class="form-control" id="txt_edit_node_param_key" placeholder="Parameter Key">
+        <input type="text" class="form-control" id="txt_edit_node_param_value" placeholder="Parameter Value">
+        <button class="form-control" type="button" class="btn btn-default btn-sm" id="btn_edit_node_add_param">Add Parameter</button>
+    </div>
+
+    <ul id="list_edit_node_params" class="list-group" name="<%-node.name%>" style="margin-top:15px;">
+        <% _.each(node.param, function(param) { %>
+            <li name="<%-param.name%>" class="list-group-item edit_node_parameter">
+                <%-param.name%>
+                    <input style="position:absolute;right:100px;height:20px;" type="text" value="<%-param.value%>" />
+                    <button type="button" style="position:absolute;right:10px;height:18px;" class="btn btn-default btn-xs btn_remove_parameter">
+                    <span class="fa fa-times"></span>
+                </button>
+            </li>
+            <% }) %>
+    </ul>
+</div>

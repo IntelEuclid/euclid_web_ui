@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="module-container panel-group" style="position:absolute;width:90%; left:5%;">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2>Euclid Nodes</h2>
+                Modify and add new euclid nodes to the system.
+            </div>
+            <div class="panel-body">
+                <button class="btn btn-default" id="btn_add_node" data-toggle="modal" data-target="#edit_node_modal"><span class="fa fa-plus"></span> Register new Node</button>
+
+                <div class="center-block" style="width:60%; left:20%;">
+                    <br>
+                    <ul class="list-group">
+                        <% _.each(nodes, function(node) { %>
+                            <li class="list-group-item"><label><%-node.name%></label>
+                                <% if (node.param != undefined) { %>
+                                    <div class="dropdown" style="display:inline; position:absolute; right:43px; margin-top:4px;" id="<%-node.name.replace(/ /g,'_')%>_params">
+                                        <button class="btn btn-default dropdown-toggle btn-xs" type="button" id="<%-node.name.replace(/ /g,'_')%>_params_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								Parameters
+								<span class="caret"></span>
+							</button>
+
+                                        <ul class="node_params_list dropdown-menu" name="<%-node.name%>" aria-labelledby="<%-node.name.replace(/ /g,'_')%>_params_btn">
+                                            <% _.each(node.param, function(param) { %>
+                                                <li name="<%-param.name%>" style="width:250px;font-size:0.75em;margin-left:5px;">
+                                                    <%-param.name%>
+                                                        <input disabled style="height:15px; position:absolute;right: 5px;" type="text" value="<%-param.value%>" />
+                                                </li>
+                                                <% }) %>
+                                        </ul>
+                                    </div>
+                                    <% } %>
+                                        <div class="dropdown" style="display:inline; position:absolute; right:10px; margin-top:4px;">
+                                            <a class="dropdown-toggle button btn btn-xs" id="<%-node.name.replace(/ /g,'_')%>_node-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                <i class="fa fa-bars" aria-hidden="true"></i>
+                                            </a>
+                                            <ul class="dropdown-menu" style="min-width:80px" aria-labelledby="<%-node.name.replace(/ /g,'_')%>_node-menu">
+                                                <li>
+                                                    <a data-toggle="modal" data-target="#edit_node_modal" data-key="<%-node.name%>" id="btn_edit_node"><i class="fa fa-pencil" aria-hidden="true" ></i> Edit </a>
+                                                </li>
+                                                <li><a data-key="<%-node.name%>" id="btn_delete_node"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete </a></li>
+                                            </ul>
+                                        </div>
+                            </li>
+                            <% }) %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="edit_node_modal" tabindex="-1" role="dialog" aria-labelledby="Edit Nodes">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="edit_node_modal_body">
+
+        </div>
+    </div>
+</div>

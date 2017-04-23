@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="module-container panel-group fade in" style="position:absolute;width:90%; left:5%;">
+
+        <div class="panel panel-default" style="height: 100%">
+            <div class="panel-heading">
+                <h2>Logs</h2>
+                View or download system log files.
+            </div>
+
+            <div class="panel-body">
+                <button class="btn btn-warning clearLog">Clear</button>
+                <pre id="logslist" style="height:50%; overflow:scroll;"> </pre>
+
+                <div class "nav">
+
+                    <div class="nav-item dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Log Files
+  <span class="caret"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-left">
+                            <% _.each(logFiles, function(file) { %>
+
+                                <li class="dropdown-item" data-toggle="pill" href="#<%-file.name%>">
+                                    <label class="btn btn-default" style="width:100%"> <%-file.name%></label>
+                                </li>
+
+                                <%});%>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tab-content" style="height: 50%; overflow:auto;">
+                    <% _.each(logFiles, function(file) { %>
+
+                        <div id="<%-file.name%>" class="tab-pane fade">
+                            <h3>
+                                <%-file.name%>
+                            </h3>
+                            <pre id="<%-file.name%>">
+                                <%-file.content%>
+                            </pre>
+                        </div>
+                        <%});%>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

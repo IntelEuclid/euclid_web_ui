@@ -1,0 +1,13 @@
+bind '"\e[1;5A": history-search-backward'
+bind '"\e[1;5B": history-search-forward'
+alias cd..="cd .."
+function psaux(){
+	ps aux | grep "$1"
+}
+alias gts="git status"
+alias gtaa="git add ."
+alias gtc="git commit -m $1"
+alias gtp="git pull"
+alias oobere="sudo service oobe-init restart-oobe"
+alias oobest="sudo service oobe-init stop"
+

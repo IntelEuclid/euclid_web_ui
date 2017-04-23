@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+    <title>Pose Viewer</title>
+    <style>
+        .btn {
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            padding: 4px 6px 4px;
+            margin-bottom: 0;
+            font-size: 12px;
+            line-height: 12px;
+            color: #bbb;
+            text-align: center;
+            text-shadow: 0 1px 1px rgba(50, 50, 50, 0.75);
+            vertical-align: middle;
+            background-color: #333;
+            background-image: -moz-linear-gradient(top, #333, #444);
+            background-image: -ms-linear-gradient(top, #333, #444);
+            background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#444));
+            background-image: -webkit-linear-gradient(top, #333, #444);
+            background-image: -o-linear-gradient(top, #333, #444);
+            background-image: linear-gradient(top, #333, #444);
+            background-repeat: repeat-x;
+            filter: progid: dximagetransform.microsoft.gradient(startColorstr=#333, endColorstr=#444, GradientType=0);
+            border-color: #444 #444 #444;
+            border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+            border: 1px solid #333;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+            -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            *margin-left: .3em;
+        }
+        
+        #poseview {
+            margin-top: 1em;
+        }
+        
+        .column.main {
+            width: 350px;
+        }
+        
+        .controls {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+        
+        .view-controls {
+            position: absolute;
+            z-index: 1000;
+            bottom: 5px;
+            left: 5px;
+        }
+        
+        .tracking-controls {
+            width: 100%;
+            position: absolute;
+            top: 260px;
+            left: 10px;
+            padding: 10pt 10pt;
+        }
+        
+        .pose {
+            position: absolute;
+            top: 0px;
+            left: 5px;
+            color: #aaaaaa;
+            font-size: 80%;
+        }
+        
+        .pose>b {
+            /*border: 1px solid red;*/
+            display: inline-block;
+            width: 3.5em;
+            margin-left: 6pt;
+            overflow: hidden;
+            text-align: right;
+        }
+        
+        .pose>.tracking {
+            width: 5em
+        }
+        
+        .tracking.na {
+            color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .tracking.fail {
+            color: #d32f2f;
+        }
+        
+        .tracking.low {
+            color: #FFA000;
+        }
+        
+        .tracking.medium {
+            color: #AFB42B;
+        }
+        
+        .tracking.high {
+            color: #388E3C;
+        }
+        
+        .content {
+            color: #2B60DE;
+            font-size: 60px;
+            font-weight: bold;
+            font-style: italic;
+            font-family: Arial Black, Times New Roman;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="poseview">
+        <div class="controls">
+            <canvas id="tracking-canvas" width=500 height=300></canvas>
+
+            <p class="view-controls">
+
+                <button class="btn btn-primary" id="viewer_reset_data" onclick="resetAll()">Reset</button>
+            </p>
+
+            <p class="pose" id="sixdof_viewer_pose">
+
+            </p>
+        </div>
+    </div>
+
+    <script src="js/lib/intel/eventemitter2.js"></script>
+    <script src="js/lib/intel/roslib.js"></script>
+    <script src="js/lib/intel/cs_ip.js"></script>
+    <script src="js/lib/threejs/three.js"></script>
+    <script src="js/lib/threejs/TrackballControls.js"></script>
+
+    <script src="js/viewer/slam.js"></script>
+    <script src="js/viewer/pose_view.js"></script>
+
+</body>
+
+</html>

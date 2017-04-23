@@ -1,0 +1,4 @@
+ln -sfn /home/euclid/.ros/log/latest /intel/euclid/public_html/logs
+
+ln -sfn /intel/licenses/ /intel/euclid/public_html/licenses
+

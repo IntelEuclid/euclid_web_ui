@@ -1,0 +1,40 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <%-nodeName%>
+  </div>
+  <div class="panel-body monitor-config-panel">
+    <div><a class="btn button" style="float:right;clear:both" id="slider-toggle">Turn Slider 
+                <span class="slider-label">Off</span> 
+                <span class="input-label" style="display:none">On</span>
+          </a></div>
+    <div class="config-form-div">
+      <form class="form-horizontal" name="nodeConfigForm">
+        <% $.each(items, function(idx, item){ %>
+          <div class="form-group">
+            <label for="param-<%-item.name%>" class="col-md-5 monitor-config-label control-label" style="padding-top:0;"><%= item.description %></label>
+            <div class="col-md-7">
+              <% if(item.inputType == 'str') { %>
+                <input type="text" name="<%-item.name%>" id="param-<%-item.name%>" value="<%-item.value%>" class="form-control">
+                <% } else if(item.inputType == 'bool') { %>
+                  <input type="checkbox" data-toggle="toggle" name="<%-item.name%>" id="param-<%-item.name%>" checked="<%-item.value%>" class="form-control">
+                  <% } else { %>
+
+                    <div class="slider-div">
+                      <b class="slider-tag-label"><%- item.minValue %></b>&nbsp;
+                      <input class='slider form-control slider-tag' data-key='<%-item.name%>' type='text' data-slider-min='<%-item.minValue%>'
+                        data-slider-max='<%-item.maxValue%>' data-slider-step='1' name="<%-item.name%>" id="param-<%-item.name%>-slider"
+                        data-slider-value='<%-item.value%>'>
+                      <any-tag></any-tag>
+                      <b class="slider-tag-label">&nbsp;<%- item.maxValue %></b>
+                    </div>
+                    <div class="input-div" style="display:none">
+                      <input class='input-tag' type='text' name="<%-item.name%>" id="param-<%-item.name%>-input" value='<%-item.value%>' />
+                    </div>
+                    <% } %>
+            </div>
+          </div>
+          <% }) %>
+      </form>
+    </div>
+  </div>
+</div>

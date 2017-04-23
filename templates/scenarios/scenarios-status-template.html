@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="module-container panel-group" style="position:absolute;width:90%; left:5%;">
+
+        <div class="panel panel-default">
+            <div class="panel-heading" style="padding-bottom:5px;">
+                <h2>Scenarios</h2>
+                You can view, run or edit scenarios in here.
+            </div>
+            <div class="panel-body">
+
+                <button type="button" class="btn btn-default" data-toggle="modal" id="new-scenario-btn" data-target="#createScenarioModal">
+                <span class="fa fa-plus"></span> Create new Scenario
+            </button>
+                <br><br>
+                <div class="module-container panel-group" id="current_scenarios" role="tablist" aria-multiselectable="true"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="createScenarioModal" tabindex="-1" role="dialog" aria-labelledby="Create Scenario">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="ScenarioModelBody">
+
+        </div>
+    </div>
+</div>

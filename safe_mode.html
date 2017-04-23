@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Intel Euclid</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <script src="js/lib/jquery/jquery-2.2.4.min.js">
+    </script>
+    <script src="js/lib/bootstrap/bootstrap.min.js">
+    </script>
+    <style>
+        .page-loader-container {
+            background-color: rgba(20, 20, 20, 0.8);
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 100000;
+        }
+        
+        .loader-text {
+            font-size: 1.5em;
+        }
+        
+        body {
+            width: 100%;
+            height: 100%;
+            font-family: 'Open Sans', sans-serif;
+            background: #222;
+        }
+        
+        .safe_mode {
+            position: absolute;
+            top: 10%;
+            left: 30%;
+            width: 30%;
+            height: 80%;
+        }
+        
+        .safe_mode h1 {
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        
+        .safe_mode h4 {
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<script>
+    $(document).ready(function() {
+        
+        $("#restart_device").click(function() {
+            $.post('/restart_device', {}, function(response) {
+                if (response == 'true') {
+                    window.location.href = "/";
+                }
+            });
+        });
+
+	$("#reconnect").click(function() {
+            $.post('/reconnect', {}, function(response) {
+                if (response == 'true') {
+                    window.location.href = "/";
+                }
+            });
+        });
+    });
+</script>
+
+<body>
+
+    <div id="loader" class="page-loader-container" style="display:none">
+        <div style="position:absolute; top:40%; left:45%; text-align: center">
+            <img class="center" src="img/spinner.gif" style="width:48px;height:48px;" />
+            <br>
+        </div>
+    </div>
+
+    <div class="safe_mode" >
+
+        <h2>Safe Mode</h2>
+        <h1>Intel Euclid</h1>
+        <br><br>
+
+        <div>
+            Euclid entered an un-defined state because it lost the connection to the network. You can either try to reconnect to the last network or restart the device.
+        </div>
+        <br><br>
+        <button id="restart_device" type="submit" class="btn btn-default btn-block btn-large">Restart Device</button>
+	<button id="reconnect" type="submit" class="btn btn-default btn-block btn-large">Reconnect to Network</button>
+    </div>
+</body>
+
+</html>

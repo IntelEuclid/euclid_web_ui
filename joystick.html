@@ -1,0 +1,117 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+	<style>
+		body {
+			overflow: hidden;
+			padding: 0;
+			margin: 0;
+			background-color: #272b30;
+		}
+		
+		#container {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			padding: 0;
+			margin: 0;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="result" style="position:absolute; left:2px; top:2px; color:#777"></div>
+
+	<div id="container"></div>
+	<script src="js/lib/intel/eventemitter2.js"></script>
+	<script src="js/lib/intel/roslib.js"></script>
+	<script src="js/lib/intel/cs_ip.js"></script>
+	<script src="js/lib/virtualstick/virtualjoystick.js"></script>
+	<script>
+		console.log("touchscreen is", VirtualJoystick.touchScreenAvailable() ? "available" : "not available");
+
+		var joystick = new VirtualJoystick({
+			container: document.getElementById('container'),
+			mouseSupport: true,
+			stationaryBase: true,
+			limitStickTravel: true,
+			baseX: window.innerWidth / 2,
+			baseY: window.innerHeight / 2,
+			stickRadius: 150,
+			strokeStyle: 'deepskyblue',
+		});
+
+		window.addEventListener('mouseout', function (e) {
+			if (e.relatedTarget == undefined) {
+				joystick._onUp();
+				console.log("left the window");
+
+			}
+		});
+		ros.on('connection', function () {
+
+			var publisher = new ROSLIB.Topic({
+				ros: ros,
+				name: '/cmd_vel_mux/input/teleop',
+				messageType: 'geometry_msgs/Twist'
+			});
+			
+			var lastLinear = 0;
+			var lastAngular = 0;
+			
+			setInterval(function () {
+
+				var outputEl = document.getElementById('result');
+
+				var deltax = joystick.deltaX();
+				var deltay = joystick.deltaY();
+
+				var angular = deltax / 150 * 2;
+				var linear = deltay / 150;
+				
+				linear = (lastLinear * 2 + linear) / 3;
+				angular = (lastAngular + 2 * angular) / 3
+				
+				angular = Math.round(angular * 100) / 100;
+				linear = Math.round(linear * 100) / 100;
+				
+				angular = Math.abs(angular) < 0.02 ? 0 : angular;
+				linear = Math.abs(linear) < 0.02 ? 0 : linear;
+				
+				lastLinear = linear;
+				lastAngular = angular;
+				
+				outputEl.innerHTML = ' linear: ' + linear
+					+ ', angular: ' + angular
+					+ (joystick.right() ? ' right' : '')
+					+ (joystick.up() ? ' foward' : '')
+					+ (joystick.left() ? ' left' : '')
+					+ (joystick.down() ? ' backward' : '')
+
+
+				var twistMsg = new ROSLIB.Message({
+					linear: {
+						x: 0.0,
+						y: 0.0,
+						z: 0.0
+					},
+					angular: {
+						x: 0.0,
+						y: 0.0,
+						z: 0.0
+					}
+				});
+				twistMsg.linear.x = -linear;
+				twistMsg.angular.z = -angular;
+				publisher.publish(twistMsg);
+			}, 1 / 10 * 1000);
+		});
+	</script>
+</body>
+
+</html>

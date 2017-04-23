@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="module-container panel-group" style="position:absolute;width:90%; left:5%;">
+
+        <div class="panel panel-default" style="height: 100%">
+            <div class="panel-heading">
+                <h2>System Status</h2>
+                Monitor and view the system's status.
+            </div>
+
+            <!-- <p class="center" id="cpumodel"></p>
+     <div class="panel-body center">
+   <span id="cpuGaugeContainer"></span>
+       <span id="memoryGaugeContainer"></span>
+       <span id="temperatureGaugeContainer"></span>
+    </div>
+    <div class="panel-body center">
+      <div class="panel-heading">CPU Frequencies</div>
+       <span id="core0GaugeContainer"></span>
+       <span id="core1GaugeContainer"></span>
+       <span id="core2GaugeContainer"></span>
+       <span id="core3GaugeContainer"></span>
+    </div> -->
+            <div id="widget-div" class="panel-body">
+                <div id="cpu-widget-div" class="col-md-12"></div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Wifi</div>
+                <div class="panel-body">
+                    <p id="wifinetwork">Wifi Network: </p>
+                    <p id="ipaddress">IP Address: </p>
+                    <p id="macaddress">Mac Address: </p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Hardware info</div>
+                <div class="panel-body">
+                    <p id="csname">Euclid Name: </p>
+                    <p id="batterystatus">Battery Status: </p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">ROS Master URI</div>
+                <div class="panel-body form-inline">
+                    <div class="form-group">
+                        <label for="ros_master_uri">ROS Master URI</label>
+                        <input id="ros_master_uri" class="form-control" type="text" value="http://localhost:11311"></input>
+                        <button type="button" class="btn btn-default ros_master_uri_btn">Set</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">USB List</div>
+                <div class="panel-body form-inline">
+                    <div class="form-group">
+                        <ul id="usblist"></ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

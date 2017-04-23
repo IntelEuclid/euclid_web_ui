@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="module-container panel-group" style="position:absolute;width:90%; left:5%;">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="padding-bottom:5px;">
+                <h2>Configurations</h2>
+                You can configure or tweak the parameters of running nodes here.
+            </div>
+            <div class="panel-body">
+
+                <div class="dropdown btn-group" style="float:left;">
+                    <button type="button" class="btn btn-primary" id="btn_refresh_configuration"> <i class="fa fa-refresh"></i> </button>
+                    <button type="button" class="btn btn-default dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true"
+                        data-onstyle="info" aria-expanded="false">
+                        Configurable Nodes <i class="fa fa-caret-down"></i>
+                        </button>
+
+                        <ul class="dropdown-menu dropdown-menu-left" id="nodesList" style="max-height:75vh;overflow-y:auto"></ul>
+                </div>
+                <div id="Configuration-buttons" style="float:right">
+                    <a class="button btn btn-success" id="save-config">Update</a>
+                    <a class="button btn btn-danger" id="reset-config">Discard changes</a>
+                    <button type="button" id="btn_save_configuration" class="btn btn-primary"><span class="fa fa-floppy-o"></span>  Save</button>
+
+                </div>
+
+
+                <br>
+
+                <div class="container-fluid" id="configuration-view" style="margin-top:50px"></div>
+
+            </div>
+            <div class="panel-footer" style="background-color:#272b30">
+                <ul>
+                    <li>
+                        Chooes a node from Configurable Nodes List whose parameters you want to tweak.
+                    </li>
+                    <li>
+                        Use the sliders or input text values to change the values for the parameter and click Update.
+                    </li>
+                    <li>
+                        Click clear to discard changes.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+</div>

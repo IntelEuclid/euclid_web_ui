@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <%-packageName%>
+    </div>
+    <div class="panel-body">
+        <ul class="no-marker">
+            <% $.each(nodes, function(idx, node){ 
+				var cla = node.isRunning ? "on-rect" : "off-rect";
+			%>
+                <li>
+                    <div class="<%-cla%>"></div>
+                    <%- node.name %>
+                </li>
+                <% }) %>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+<nav class="navbar navbar-fixed-top" id="header-navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-bar" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-bars"></i>
+        </button>
+            <a class="navbar-brand" href="#"><img style="height:25px" src='img/realsense-logo.png' /></a>
+
+        </div>
+        <div class="collapse navbar-collapse" id="nav-bar">
+            <ul class="nav navbar-nav header-navbar-nav">
+                <li class="dropdown">
+                    <a href="#config/scenarios" aria-expanded="false"><i class="fa fa-caret-square-o-right" style="padding-right:5px;" />Scenarios</a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav header-navbar-nav">
+                <li class="dropdown">
+                    <a href="#system/nodes-view" aria-expanded="false"><i class="fa fa-object-ungroup" style="padding-right:5px;" />Euclid Nodes</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav header-navbar-nav">
+                <li class="dropdown">
+                    <a href="#apps" aria-expanded="false"><i class="fa fa-television" style="padding-right:5px;" />Monitor</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav header-navbar-nav">
+                <li class="dropdown">
+                    <a href="#config/nodes-configuration" aria-expanded="false"><i class="fa fa-gears" style="padding-right:5px;" />Configuration</a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-briefcase" style="padding-right:5px;" />Utilities <span class="caret"></span></a>
+                    <ul class="dropdown-menu header-navbar-nav">
+                        <!-- This line is commented out to disable wireless page until fixed 
+                        <li><a href="#system/wireless">Wireless Settings</a></li> 
+                        -->
+                        <li>
+                            <a href="#system/status"><i class="fa fa-tachometer" style="padding-right:5px;" />System Status</a>
+                        </li>
+                        <li>
+                            <a href="#system/nodes" aria-expanded="false"><i class="fa fa-star-o" style="padding-right:5px;" />Nodes Status</a>
+                        </li>
+                        <li>
+                            <a href="#system/wireless"> <i class="fa fa-rss" style="padding-right:5px;" /> WiFi Settings</a>
+                        </li>
+                        <li>
+                            <a href="#system/logs"><i class="fa fa-commenting" style="padding-right:5px;" />Logs</a>
+                        </li>
+                        <li>
+                            <a href="#utils/arduino"><i class="fa fa-download" style="padding-right:5px;" />Arduino Lib</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+                    <ul class="dropdown-menu header-navbar-nav">
+                        <li><a href="#main/license">License</a></li>
+                        <li><a href="#main/help">Help</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav header-navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" style="color:gold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bolt" style="padding-right:5px;" />Power <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a id="nav_bar_restart_oobe">Restart OOBE</a></li>
+                        <li>
+                            <a id="nav_bar_reboot"><i class="fa fa-refresh" style="padding-right:5px;" />Reboot</a>
+                        </li>
+                        <li>
+                            <a id="nav_bar_shutdown"><i class="fa fa-power-off" style="padding-right:5px;" />Shutdown</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right hidden-xs" style="margin-top: 5px;">
+                <div class="clock">
+                    <div id="Date"></div>
+                    <ul>
+                        <li id="hours"></li>
+                        <li id="point">:</li>
+                        <li id="min"></li>
+                        <li id="point">:</li>
+                        <li id="sec"></li>
+                    </ul>
+                </div>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <div style="margin-left: 20px;margin-right:10px;" id="batteryContainer">
+                </div>
+            </ul>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<div id="subnav"></div>

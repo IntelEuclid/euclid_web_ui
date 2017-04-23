@@ -1,0 +1,78 @@
+<div class="container">
+    <h1>Motors Gain Configuration</h1>
+    <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="gain_reset btn btn-danger">Reset</button>
+        <button type="button" class="gain_save btn btn-success">Update</button>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Backward Multiplier</div>
+                <div class="panel-body">
+                    <span class="help-block"></span>
+                    <b>0 </b><input class="slider" data-key="backward_mult" type="text" data-slider-min="0" data-slider-max="5"
+                        data-slider-step="0.1" data-slider-value="1.0" /><b> 5</b>
+                    <div class="slider-input-box">
+                        <input type="number" data-key="backward_mult_text" class="slide-input" value="1.0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Forward Multiplier</div>
+                <div class="panel-body">
+                    <span class="help-block"></span>
+                    <b>0 </b><input class="slider" data-key="forward_mult" type="text" data-slider-min="0" data-slider-max="5"
+                        data-slider-step="0.1" data-slider-value="1.0" /><b> 5</b>
+                    <div class="slider-input-box">
+                        <input type="number" data-key="forward_mult_text" class="slide-input" value="1.0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Rotaion Multiplier</div>
+                <div class="panel-body">
+                    <span class="help-block"></span>
+                    <b>0 </b><input class="slider" data-key="rotation_mult" type="text" data-slider-min="0" data-slider-max="5"
+                        data-slider-step="0.1" data-slider-value="1.0" /><b> 5</b>
+                    <div class="slider-input-box">
+                        <input type="number" data-key="rotation_mult_text" class="slide-input" value="1.0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Left Gain</div>
+                <div class="panel-body">
+                    <span class="help-block"></span>
+                    <b>0 </b><input class="slider" data-key="left_gain" type="text" data-slider-min="0" data-slider-max="5"
+                        data-slider-step="0.1" data-slider-value="1.0" /><b> 5</b>
+                    <div class="slider-input-box">
+                        <input type="number" data-key="left_gain_text" class="slide-input" value="1.0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Right Gain</div>
+                <div class="panel-body">
+                    <span class="help-block"></span>
+                    <b>0 </b><input class="slider" data-key="right_gain" type="text" data-slider-min="0" data-slider-max="5"
+                        data-slider-step="0.1" data-slider-value="1.0" /><b> 5</b>
+                    <div class="slider-input-box">
+                        <input type="number" data-key="right_gain_text" class="slide-input" value="1.0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="res" class="alert"></div>
+</div>

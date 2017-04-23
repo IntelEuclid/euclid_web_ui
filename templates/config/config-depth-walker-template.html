@@ -1,0 +1,207 @@
+<div class="container">
+    <h1>Realsense Depth Walker</h1>
+    <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="walker_reset btn btn-danger">Reset</button>
+        <button type="button" class="walker_save btn btn-success">Update</button>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Min Y in pointcloud</div>
+                <div class="panel-body">
+                    <span class="help-block"></span>
+                    <b> -10.0 </b><input class="slider" data-key="mMinY" type="text" data-slider-min="-10.0" data-slider-max="10.0"
+                        data-slider-step="0.1" data-slider-value="0.0" /><b> 10.0 </b>
+                    <div class="slider-input-box">
+                        <input type="number" data-key="mMinY_text" class="slide-input" value="0.0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Max Y in pointcloud</div>
+                <div class="panel-body">
+                    <span class="help-block"></span>
+                    <b> -10.0 </b><input class="slider" data-key="mMaxY" type="text" data-slider-min="-10.0" data-slider-max="10.0"
+                        data-slider-step="0.1" data-slider-value="2.0" /><b> 10.0 </b>
+                    <div class="slider-input-box">
+                        <input type="number" data-key="mMaxY_text" class="slide-input" value="2.0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Min X in pointcloud</div>
+                <div class="panel-body">
+                    <span class="help-block"></span>
+                    <b> -10.0 </b><input class="slider" data-key="mMinX" type="text" data-slider-min="-10.0" data-slider-max="10.0"
+                        data-slider-step="0.1" data-slider-value="-0.3" /><b> 10.0 </b>
+                    <div class="slider-input-box">
+                        <input type="number" data-key="mMinX_text" class="slide-input" value="-0.3">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Enabled</div>
+                <div class="panel-body">
+                    <span class="help-block"></span>
+                    <input type="checkbox" data-key="mEnabled" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Max X in pointcloud</div>
+                <div class="panel-body">
+                    <span class="help-block"></span>
+                    <b>-10 </b><input class="slider" data-key="mMaxX" type="text" data-slider-min="-10" data-slider-max="10"
+                        data-slider-step="0.1" data-slider-value="0.3" /><b> 10</b>
+                    <div class="slider-input-box">
+                        <input type="number" data-key="mMaxX_text" class="slide-input" value="0.3">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Min Z in pointcloud</div>
+                <div class="panel-body">
+                    <span class="help-block"></span>
+                    <b> 0.0 </b><input class="slider" data-key="mMinZ" type="text" data-slider-min="0.0" data-slider-max="10.0"
+                        data-slider-step="0.1" data-slider-value="0.3" /><b> 10.0 </b>
+                    <div class="slider-input-box">
+                        <input type="number" data-key="mMinZ_text" class="slide-input" value="0.3">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Max Z in pointcloud</div>
+                <div class="panel-body">
+                    <span class="help-block"></span>
+                    <b> 0.0 </b><input class="slider" data-key="mMaxZ" type="text" data-slider-min="0.0" data-slider-max="10.0"
+                        data-slider-step="0.1" data-slider-value="3.0" /><b> 10.0 </b>
+                    <div class="slider-input-box">
+                        <input type="number" data-key="mMaxZ_text" class="slide-input" value="3.0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Goal Z</div>
+                <div class="panel-body">
+                    <span class="help-block"></span>
+                    <b> 0.6 </b><input class="slider" data-key="mGoalZ" type="text" data-slider-min="0.6" data-slider-max="3.0"
+                        data-slider-step="0.1" data-slider-value="1.0" /><b> 3.0 </b>
+                    <div class="slider-input-box">
+                        <input type="number" data-key="mGoalZ_text" class="slide-input" value="1.0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Goal X</div>
+                <div class="panel-body">
+                    <span class="help-block"></span>
+                    <b> -10.0 </b><input class="slider" data-key="mGoalX" type="text" data-slider-min="-10.0" data-slider-max="10.0"
+                        data-slider-step="0.1" data-slider-value="0.0" /><b> 10.0 </b>
+                    <div class="slider-input-box">
+                        <input type="number" data-key="mGoalX_text" class="slide-input" value="0.0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Scale Z</div>
+                <div class="panel-body">
+                    <span class="help-block"></span>
+                    <b> -10.0 </b><input class="slider" data-key="mScaleZ" type="text" data-slider-min="-10.0" data-slider-max="10.0"
+                        data-slider-step="0.1" data-slider-value="1.0" /><b> 10.0 </b>
+                    <div class="slider-input-box">
+                        <input type="number" data-key="mScaleZ_text" class="slide-input" value="1.0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Scale X</div>
+                <div class="panel-body">
+                    <span class="help-block"></span>
+                    <b> -10.0 </b><input class="slider" data-key="mScaleX" type="text" data-slider-min="-10.0" data-slider-max="10.0"
+                        data-slider-step="0.1" data-slider-value="5.0" /><b> 10.0 </b>
+                    <div class="slider-input-box">
+                        <input type="number" data-key="mScaleX_text" class="slide-input" value="5.0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Max Robot Linear Speed</div>
+                <div class="panel-body">
+                    <span class="help-block"></span>
+                    <b>0 </b><input class="slider" data-key="mMaxRobotSpeed" type="text" data-slider-min="0.0" data-slider-max="10.0"
+                        data-slider-step="0.1" data-slider-value="1.0" /><b> 0.0</b>
+                    <div class="slider-input-box">
+                        <input type="number" data-key="mMaxRobotSpeed_text" class="slide-input" value="1.0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Min Blob size</div>
+                <div class="panel-body">
+                    <span class="help-block"></span>
+                    <b> 0 </b><input class="slider" data-key="mMinBlobSize" type="text" data-slider-min="0" data-slider-max="100000"
+                        data-slider-step="100" data-slider-value="1000" /><b> 100000 </b>
+                    <div class="slider-input-box">
+                        <input type="number" data-key="mMinBlobSize_text" class="slide-input" value="1000">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Goal interval</div>
+                <div class="panel-body">
+                    <span class="help-block"></span>
+                    <b> 0 </b><input class="slider" data-key="mGoalInterval" type="text" data-slider-min="0" data-slider-max="1.0"
+                        data-slider-step="0.01" data-slider-value="0.05" /><b> 1.0 </b>
+                    <div class="slider-input-box">
+                        <input type="number" data-key="mGoalInterval_text" class="slide-input" value="0.05">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">Dumping factor</div>
+                <div class="panel-body">
+                    <span class="help-block"></span>
+                    <b> 0 </b><input class="slider" data-key="mDumperDivisor" type="text" data-slider-min="0.0" data-slider-max="100.0"
+                        data-slider-step="1.0" data-slider-value="5.0" /><b> 100.0 </b>
+                    <div class="slider-input-box">
+                        <input type="number" data-key="mDumperDivisor_text" class="slide-input" value="5.0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="res" class="alert"></div>
+</div>

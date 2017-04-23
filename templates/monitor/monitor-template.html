@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="module-container panel-group" style="position:absolute;width:90%; left:5%;">
+
+        <div class="panel panel-default" style="height: 100%">
+            <div class="panel-heading">
+                <h2>Monitor</h2>
+                Use the monitor page to view raw data and published topics.
+            </div>
+            <div class="panel-body">
+
+                <div style="float:left;">
+                    <div class="mobile-only">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" data-onstyle="info" aria-expanded="false">
+                         <i class="fa fa-television"></i> Monitor Menu
+                         </button>
+                            <ul class="dropdown-menu" id="mobile-monitor-menu">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="desktop-only">
+                        <ul class="list-inline" id="monitor-menu">
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="dropdown btn-group" style="float:right;">
+                    <button type="button" class="btn btn-primary" id="btn_refresh_configuration"> <i class="fa fa-refresh"></i> </button>
+                    <button type="button" class="btn btn-default dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" data-onstyle="info" aria-expanded="false">
+                               Configurable Nodes <i class="fa fa-caret-down"></i> 
+                            </button>
+
+                    <ul class="dropdown-menu dropdown-menu-left" id="nodesList" style="max-height:75vh;overflow-y:auto"></ul>
+                </div>
+
+                <div class="container-fluid monitor-screens" style="padding-left:1px;padding-right: 1px;" id="monitor-div">
+
+                    <div id="configuration-div" class="col-md-4" style="display:none;z-index:99;background-color:#333437;<%if(!App.isMobile) {%>float:right <% } %>">
+                        <div id="Configuration-buttons">
+                            <a class="button btn btn-success" id="save-config">Update</a>
+                            <a class="button btn btn-danger" id="reset-config">Reset</a>
+                            <a class="button btn btn-default" id="close-config">Close</a>
+                            <a class="button btn btn-primary" id="btn_save_configuration" style="float:right"><span class="fa fa-floppy-o"></span>  Save</a>
+
+                        </div>
+                        <div id="configuration-view" style="padding-top:10px"></div>
+                    </div>
+                    <div id="monitor-view" style="padding-left:1px;padding-right: 1px;" class="monitor-view col-md-12"></div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
