@@ -13,7 +13,7 @@ See User manual for more operational details.
 
 # Contributing to the Project
 
-The Intel&reg; Euclid&trade; Automation Scripts is developed and distributed under
+The Intel&reg; Euclid&trade; Web UI is developed and distributed under
 a BSD-3 license as noted in [licenses/License.txt](licenses/License.txt).
 
 By making a contribution to this project, I certify that:
