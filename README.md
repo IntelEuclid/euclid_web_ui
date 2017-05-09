@@ -5,6 +5,12 @@ http://www.intel.com/Euclid_XXX
 
 http://wiki.ros.org/EuclidWiki_XXX
 
+# Usage
+Connect any mobile device to the Intel&reg; Euclid&trade; device.
+Open browser and browse to the Euclid&trade; IP address.
+Intel&reg; Euclid&trade; web ui will be opened presenting its home page info.
+See User manual for more operational details.
+
 # Contributing to the Project
 
 The Intel&reg; Euclid&trade; Automation Scripts is developed and distributed under
