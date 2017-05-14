@@ -1,9 +1,9 @@
 # Intel&reg; Euclid&trade; Web UI
 Automation Web User Interface for use with Intel&reg; Euclid&trade; Development kit.
 
-http://www.intel.com/Euclid_XXX
+[Intel® Euclid™ Community Site](http://www.euclidcommunity.intel.com).
 
-http://wiki.ros.org/EuclidWiki_XXX
+[Intel® Euclid™ Support Forum](http://www.intel.com/content/www/us/en/support/emerging-technologies/intel-euclid-development-kit.html).
 
 # Usage
 Connect any mobile device to the Intel&reg; Euclid&trade; device.
