@@ -1,4 +1,5 @@
-# Intel&reg; Euclid&trade; Web UI
+# Intel&reg; Euclid&trade; Web Interface.
+
 Automation Web User Interface for use with Intel&reg; Euclid&trade; Development kit.
 
 [Intel® Euclid™ Community Site](http://www.euclidcommunity.intel.com).
