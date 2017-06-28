@@ -1,0 +1,142 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <style>
+        body {
+            overflow: hidden;
+            padding: 10px;
+            margin: 0;
+            color: white;
+            background-color: #272b30;
+        }
+        
+        .meter {
+            margin-bottom: 5px;
+            height: 20px;
+            width: 90%;
+            /* Can be anything */
+            background: #aaa;
+            -moz-border-radius: 15px;
+            -webkit-border-radius: 15px;
+            border-radius: 5px;
+            padding: 2px;
+        }
+        
+        .meter>span {
+            opacity: 1;
+            display: block;
+            height: 100%;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .meter>span.green {
+            background-color: rgb(84, 240, 84);
+        }
+        
+        .meter>span.yellow {
+            background-color: rgb(255, 200, 0);
+        }
+        
+        .meter>span.red {
+            background-color: rgb(255, 50, 53);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="result" style="text-align: center; position:absolute; left:5%; top:40px; color:#111; width:100%;height:100%">
+        <h4>CPU</h4>
+        <div class="meter">
+            <div id="core0txt" style="position:absolute; top:2px; text-align:center; width:100%; z-index: 100">Core</div>
+            <span id="core0" class="" style="width:75%; text-align: center; "> </span>
+        </div>
+        <div class="meter">
+            <div id="core1txt" style="position:absolute; top:32px; text-align:center; width:100%; z-index: 100">Core</div>
+            <span id="core1" class="" style="position:relative;width:75%; text-align: center; "></span>
+        </div>
+        <div class="meter">
+            <div id="core2txt" style="position:absolute; text-align:center; width:100%; top:62px;z-index: 100">Core</div>
+            <span id="core2" class="" style="width:75%; text-align: center; "></span>
+        </div>
+        <div class="meter">
+            <div id="core3txt" style="position:absolute; top:92px; text-align:center; width:100%; z-index: 100">Core</div>
+            <span id="core3" class="" style="width:75%; text-align: center; "></span>
+        </div>
+        <div class="meter">
+            <span id="temp" class="" style="width:75%; text-align: center; ">Temprature</span>
+        </div>
+        <br>
+        <h4>Memory</h4>
+
+        <div class="meter">
+            <span id="mem" class="" style="width:75%; text-align: center; ">Memory</span>
+        </div>
+    </div>
+
+    <div id="container "></div>
+    <script src="js/lib/intel/eventemitter2.js "></script>
+    <script src="js/lib/intel/roslib.js "></script>
+    <script src="js/lib/intel/cs_ip.js "></script>
+    <script src="js/lib/jquery/jquery-2.2.4.min.js "></script>
+
+    <script>
+        ros.on('connection', function() {
+
+            var listener = new ROSLIB.Topic({
+                ros: ros,
+                name: '/cpu_info',
+                messageType: 'system_monitor/CpuStatus'
+            });
+
+            function round2d(num) {
+                return Math.round(num * 100) / 100;
+            }
+
+            function setCpuUtil(core, util, freq) {
+                $('#' + core).removeClass('red');
+                $('#' + core).removeClass('yellow');
+                $('#' + core).removeClass('green');
+
+                $('#' + core).css('width', Math.round(util) + "%");
+                $('#' + core + 'txt').html(round2d(freq / 1000.0) + " Ghz");
+
+                if (util <= 30)
+                    $('#' + core).addClass('green');
+                else if (util > 30 && util < 70)
+                    $('#' + core).addClass('yellow');
+                else if (util >= 70)
+                    $('#' + core).addClass('red');
+            }
+            listener.subscribe(function(message) {
+                console.log(message);
+                setCpuUtil('core0', message.cpu_utilizations[0], message.cpu_frequencies[0]);
+                setCpuUtil('core1', message.cpu_utilizations[1], message.cpu_frequencies[1]);
+                setCpuUtil('core2', message.cpu_utilizations[2], message.cpu_frequencies[2]);
+                setCpuUtil('core3', message.cpu_utilizations[3], message.cpu_frequencies[3]);
+
+                setCpuUtil('temp', message.cpu_temperature, message.cpu_temperature);
+
+                $('#temp').html('' + message.cpu_temperature + " C");
+
+                var memUsage = round2d(message.mem_usage_percentage / 100.0 * 4);
+
+
+                setCpuUtil('mem', message.mem_usage_percentage, memUsage);
+                $('#mem').html('' + memUsage + " GB");
+
+
+            });
+        });
+    </script>
+</body>
+
+</html>
